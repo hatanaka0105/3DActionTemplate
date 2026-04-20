@@ -619,7 +619,7 @@ namespace Blocks.Gameplay.Core
                 // Prevent NaN values from breaking transform
                 if (!float.IsNaN(finalMovementVector.x) && !float.IsNaN(finalMovementVector.y) && !float.IsNaN(finalMovementVector.z))
                 {
-                    //m_CharacterController.Move(finalMovementVector);
+                    m_CharacterController.Move(finalMovementVector);
                 }
             }
         }
