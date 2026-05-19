@@ -18,7 +18,7 @@ public class FireBall : MonoBehaviour
             var rigidbody = collider.GetComponent<Rigidbody>();
             if(rigidbody != null)
             {
-                rigidbody.AddForce(transform.position - collider.transform.position * _power);
+                rigidbody.AddForce(collider.transform.position - transform.position * _power);
             }
         }
         Instantiate(_effect, transform.position, transform.rotation);
