@@ -30,12 +30,6 @@ using DG.Tweening;
         [SerializeField]
         private bool _ignoreZ = false;
 
-        [SerializeField]
-        private MMF_Player _appearingFeedback;
-
-        [SerializeField]
-        private MMF_Player _disappearingFeedback;
-
         private Tween _tween;
 
         private void OnEnable()
@@ -71,7 +65,6 @@ using DG.Tweening;
 
         public void DisableWithTween()
         {
-            _disappearingFeedback?.PlayFeedbacks();
             _tween = transform.DOScale(Vector3.zero, _scaleDuration)
                 .SetEase(_easeType)
                 .SetUpdate(_ignoreTimeScale)
