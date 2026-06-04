@@ -1,0 +1,23 @@
+using UnityEngine;
+using DG.Tweening;
+
+public class AppearingOnRotateEasing : MonoBehaviour
+{
+    [SerializeField]
+    private Vector3 _targetRotation;
+
+    [SerializeField]
+    private float _duration;
+
+    [SerializeField]
+    private Ease _easeType;
+
+    [SerializeField]
+    private RotateMode _rotateMode;
+
+    private void OnEnable()
+    {
+        transform.DORotate(_targetRotation, _duration, _rotateMode)
+            .SetEase(_easeType);
+    }
+}
