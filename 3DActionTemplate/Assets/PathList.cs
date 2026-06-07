@@ -90,6 +90,21 @@ using UnityEngine;
         }
 
 #if UNITY_EDITOR
+
+        public static Vector3 CatmullRom(Vector3[] points, int index, float t)
+        {
+            // Ensure the index is within bounds
+            index = Mathf.Clamp(index, 0, points.Length - 2);
+
+            Vector3 p0 = points[Mathf.Clamp(index - 1, 0, points.Length - 1)];
+            Vector3 p1 = points[index];
+            Vector3 p2 = points[Mathf.Clamp(index + 1, 0, points.Length - 1)];
+            Vector3 p3 = points[Mathf.Clamp(index + 2, 0, points.Length - 1)];
+
+            // Catmull-Rom spline formula
+            return 0.5f * ((2f * p1) + (-p0 + p2) * t + (2f * p0 - 5f * p1 + 4f * p2 - p3) * t * t + (-p0 + 3f * p1 - 3f * p2 + p3) * t * t * t);
+        }
+        
         void OnDrawGizmos()
         {
             if (_transformList == null || _transformList.Count < 2)
@@ -123,7 +138,7 @@ using UnityEngine;
                 for (int j = 0; j <= resolution; j++)
                 {
                     float t = j / (float)resolution;
-                    Vector3 point = UUtility.CatmullRom(path, i - 1, t);
+                    Vector3 point = CatmullRom(path, i - 1, t);
                     Gizmos.DrawLine(previousPoint, point);
                     previousPoint = point;
                 }
