@@ -116,11 +116,11 @@ using UnityEngine;
         public void Spawn(Vector3 spawnPos)
         {
             var obj = Instantiate(_spawnObj, spawnPos, Quaternion.identity, _parent);
-            var spawn = obj.GetComponent<ISpawn>();
-            if(spawn != null)
+            //var spawn = obj.GetComponent<ISpawn>();
+            //if(spawn != null)
             {
-                spawn.Rotate(_direction);
-                spawn.StartMove(50, 100);
+                //spawn.Rotate(_direction);
+                //spawn.StartMove(50, 100);
             }
         }
     }
